@@ -1,4 +1,5 @@
 import React from "react";
+import uuid from "uuid/v1";
 import { Tabs, Tab, Paper } from "@material-ui/core";
 
 export default function Footer({ muscles }) {
@@ -17,8 +18,9 @@ export default function Footer({ muscles }) {
         indicatorColor="secondary"
         centered
       >
-        {muscles.map(muscle => (
-          <Tab label={muscle} />
+        <Tab label="All" key={uuid()} />
+        {muscles.map(group => (
+          <Tab key={uuid()} label={group} />
         ))}
       </Tabs>
     </Paper>
