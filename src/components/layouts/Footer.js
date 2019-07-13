@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs, Tab, Paper } from "@material-ui/core";
 
-export default function Footer() {
+export default function Footer({ muscles }) {
   const [value, setValue] = React.useState(0);
 
   function handleChange(event, newValue) {
@@ -14,12 +14,12 @@ export default function Footer() {
         onChange={handleChange}
         variant="fullWidth"
         textColor="primary"
-        indicatorColor="primary"
+        indicatorColor="secondary"
         centered
       >
-        <Tab label="Item 1" />
-        <Tab label="Item 2" />
-        <Tab label="Item 3" />
+        {muscles.map(muscle => (
+          <Tab label={muscle} />
+        ))}
       </Tabs>
     </Paper>
   );

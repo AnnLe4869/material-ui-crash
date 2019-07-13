@@ -1,6 +1,6 @@
 import React from "react";
 import { Paper } from "@material-ui/core";
 
-export default function LeftPane() {
-  return <Paper>Left pane</Paper>;
+export default function LeftPane(props) {
+  return <Paper className={props.className}>Left pane</Paper>;
 }

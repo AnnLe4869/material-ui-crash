@@ -3,6 +3,7 @@ import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import LeftPane from "./LeftPane";
 import RightPane from "./RightPane";
+
 const useStyles = makeStyles(theme => ({
   pane: {
     padding: theme.spacing(2),
@@ -14,11 +15,11 @@ const useStyles = makeStyles(theme => ({
 export default function Index() {
   const classes = useStyles();
   return (
-    <Grid container>
-      <Grid item xs>
-        <LeftPane className={classes.pane} />
+    <Grid container justify="space-around">
+      <Grid item xs={5}>
+        <LeftPane className={classes.pane} style={{ border: "red solid 3px" }} />
       </Grid>
-      <Grid item xs>
+      <Grid item xs={5}>
         <RightPane className={classes.pane} />
       </Grid>
     </Grid>
