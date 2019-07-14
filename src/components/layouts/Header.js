@@ -1,4 +1,5 @@
 import React from "react";
+import CreateDialog from "../exercises/dialogs/Create";
 import { AppBar, Toolbar, Typography, Button, IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { makeStyles } from "@material-ui/core/styles";
@@ -29,12 +30,7 @@ export function Header() {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <Button className={classes.logButton} variant="contained" color="inherit">
-            Login
-          </Button>
-          <Button className={classes.logButton} variant="contained" color="secondary">
-            Sign out
-          </Button>
+          <CreateDialog />
         </Toolbar>
       </AppBar>
     </div>
