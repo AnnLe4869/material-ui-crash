@@ -17,35 +17,53 @@ const useStyles = makeStyles(theme => ({
     marginTop: 10
   }
 }));
-export default function Index({ exercises }) {
+
+// Note how destructure syntax is used here and how default value is set so to avoid an initial stage
+export default function Index({
+  exercises,
+  category,
+  onSelect,
+  exercise: {
+    id,
+    title = "Welcome!", //default value, used for initial state
+    description = "Please select an exercise from the list on the left"
+  }
+}) {
   const classes = useStyles();
 
   return (
     <Grid container justify="space-around">
       <Grid item xs={5}>
         <Paper className={classes.pane}>
-          {exercises.map(([group, exercises]) => (
-            <React.Fragment>
-              <Typography variant="h5" className={classes.titleText}>
-                {group}
-              </Typography>
-              <List component="ul">
-                {exercises.map(({ title }) => (
-                  <ListItem button>
-                    <ListItemText primary={title} />
-                  </ListItem>
-                ))}
-              </List>
-            </React.Fragment>
-          ))}
+          {exercises.map((
+            [group, exercises] // Note destructure array here
+          ) =>
+            // A short-hand if-else here.
+            // So if group is match category then display, else don't display
+            // By this way if category change, which caused by footer action, this list also change accordingly
+            !category || category === group ? (
+              <React.Fragment key={group}>
+                <Typography variant="h5" className={classes.titleText}>
+                  {group}
+                </Typography>
+                <List component="ul">
+                  {exercises.map(({ title, id }) => (
+                    <ListItem button onClick={() => onSelect(id)} key={id}>
+                      <ListItemText primary={title} />
+                    </ListItem>
+                  ))}
+                </List>
+              </React.Fragment>
+            ) : null
+          )}
         </Paper>
       </Grid>
       <Grid item xs={5}>
         <Paper className={classes.pane}>
           <React.Fragment>
-            <Typography variant="h5">Welcome!</Typography>
+            <Typography variant="h5">{title}</Typography>
             <Typography variant="subtitle1" className={classes.welcomeText}>
-              Please select an exercise from the list on the left
+              {description}
             </Typography>
           </React.Fragment>
         </Paper>
