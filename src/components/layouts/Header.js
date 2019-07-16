@@ -1,8 +1,9 @@
 import React from "react";
 import CreateDialog from "../exercises/dialogs/Create";
-import { AppBar, Toolbar, Typography, Button, IconButton } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+
+import MenuIcon from "@material-ui/icons/Menu";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -18,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export function Header() {
+export function Header({ muscles, onExerciseCreate }) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -30,7 +31,7 @@ export function Header() {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <CreateDialog />
+          <CreateDialog categories={muscles} onCreate={onExerciseCreate} />
         </Toolbar>
       </AppBar>
     </div>

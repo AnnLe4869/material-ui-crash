@@ -24,25 +24,30 @@ function App() {
     );
   }
 
-  function handleCategorySelected(category) {
+  function handleCategorySelect(category) {
     setCategory(category);
   }
 
   // Note how array method is skillfully used here instead of manually code
   // Some useful ones are find(), indexOf(), includes()
-  function handleExerciseSelected(id) {
+  function handleExerciseSelect(id) {
     setExercise(exercises.find(ex => ex.id === id));
   }
+
+  function handleExerciseCreate(exercise) {
+    setExercises([...exercises, exercise]);
+  }
+
   return (
     <div className="App">
-      <Header />
+      <Header muscles={muscles} onExerciseCreate={handleExerciseCreate} />
       <Exercises
         exercises={getExercisesByMuscles()}
         exercise={exercise}
         category={category}
-        onSelect={handleExerciseSelected}
+        onSelect={handleExerciseSelect}
       />
-      <Footer category={category} muscles={muscles} onSelect={handleCategorySelected} />
+      <Footer category={category} muscles={muscles} onSelect={handleCategorySelect} />
     </div>
   );
 }
