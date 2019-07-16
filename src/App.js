@@ -22,14 +22,11 @@ function App() {
       {}
     );
     return Object.entries(
-      exercises.reduce(
-        (exercises, exercise) => {
-          const { muscles } = exercise;
-          exercises[muscles] = [...exercises[muscles], exercise];
-          return exercises;
-        },
-        { initExercises }
-      )
+      exercises.reduce((exercises, exercise) => {
+        const { muscles } = exercise;
+        exercises[muscles] = [...exercises[muscles], exercise];
+        return exercises;
+      }, initExercises)
     );
   }
 
