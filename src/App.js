@@ -13,14 +13,23 @@ function App() {
   // Object is easier to create and manage
   // Also note how reduce() is used to transform old data to new and useable data. Don't forget the initial value of reduce()
   function getExercisesByMuscles() {
+    // Add this variable so that when we delete all content under the title, the title will not disappear
+    const initExercises = muscles.reduce(
+      (exercises, category) => ({
+        ...exercises,
+        [category]: []
+      }),
+      {}
+    );
     return Object.entries(
-      exercises.reduce((exercises, exercise) => {
-        const { muscles } = exercise;
-        exercises[muscles] = exercises[muscles]
-          ? [...exercises[muscles], exercise]
-          : [exercise];
-        return exercises;
-      }, {})
+      exercises.reduce(
+        (exercises, exercise) => {
+          const { muscles } = exercise;
+          exercises[muscles] = [...exercises[muscles], exercise];
+          return exercises;
+        },
+        { initExercises }
+      )
     );
   }
 
@@ -38,6 +47,10 @@ function App() {
     setExercises([...exercises, exercise]);
   }
 
+  function handleExerciseDelete(id) {
+    setExercises(exercises.filter(ex => ex.id !== id));
+  }
+
   return (
     <div className="App">
       <Header muscles={muscles} onExerciseCreate={handleExerciseCreate} />
@@ -46,6 +59,7 @@ function App() {
         exercise={exercise}
         category={category}
         onSelect={handleExerciseSelect}
+        onDelete={handleExerciseDelete}
       />
       <Footer category={category} muscles={muscles} onSelect={handleCategorySelect} />
     </div>

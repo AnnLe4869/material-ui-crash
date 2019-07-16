@@ -1,5 +1,15 @@
 import React from "react";
-import { Grid, Paper, Typography, List, ListItem, ListItemText } from "@material-ui/core";
+import {
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+  Paper,
+  Typography
+} from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -27,7 +37,8 @@ export default function Index({
     id,
     title = "Welcome!", //default value, used for initial state
     description = "Please select an exercise from the list on the left"
-  }
+  },
+  onDelete
 }) {
   const classes = useStyles();
 
@@ -50,6 +61,11 @@ export default function Index({
                   {exercises.map(({ title, id }) => (
                     <ListItem button onClick={() => onSelect(id)} key={id}>
                       <ListItemText primary={title} />
+                      <ListItemSecondaryAction>
+                        <IconButton onClick={() => onDelete(id)}>
+                          <DeleteIcon />
+                        </IconButton>
+                      </ListItemSecondaryAction>
                     </ListItem>
                   ))}
                 </List>
