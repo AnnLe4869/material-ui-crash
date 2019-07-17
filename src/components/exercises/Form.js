@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     minWidth: 200
   }
 }));
-export default function Form({ onSubmit, muscles: categories }) {
+export default function Form({ onSubmit, muscles }) {
   const classes = useStyles();
   const [exercise, setExercise] = useState({
     title: "",
@@ -49,7 +49,7 @@ export default function Form({ onSubmit, muscles: categories }) {
       <FormControl className={classes.dialogFormControl}>
         <InputLabel htmlFor="muscles">Muscles</InputLabel>
         <Select value={exercise.muscles} onChange={handleChange("muscles")}>
-          {categories.map(category => (
+          {muscles.map(category => (
             <MenuItem key={category} value={category}>
               {category}
             </MenuItem>

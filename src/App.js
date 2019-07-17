@@ -9,12 +9,7 @@ function App() {
   const [exercise, setExercise] = useState({});
   const [editMode, setEditNode] = useState(undefined);
 
-  // Note how interchange between object and array
-  // Array is easier to enumerate/loop through
-  // Object is easier to create and manage
-  // Also note how reduce() is used to transform old data to new and useable data. Don't forget the initial value of reduce()
   function getExercisesByMuscles() {
-    // Add this variable so that when we delete all content under the title, the title will not disappear
     const initExercises = muscles.reduce(
       (exercises, category) => ({
         ...exercises,
@@ -35,8 +30,6 @@ function App() {
     setCategory(category);
   }
 
-  // Note how array method is skillfully used here instead of manually code
-  // Some useful ones are find(), indexOf(), includes()
   function handleExerciseSelect(id) {
     setExercise(exercises.find(ex => ex.id === id));
   }
@@ -49,7 +42,7 @@ function App() {
     setExercises(exercises.filter(ex => ex.id !== id));
   }
 
-  function handleExerciseEdit(id) {
+  function handleExerciseSelectEdit(id) {
     setEditNode(true);
     setExercise(exercises.find(ex => ex.id === id));
   }
@@ -69,7 +62,7 @@ function App() {
         muscles={muscles}
         onSelect={handleExerciseSelect}
         onDelete={handleExerciseDelete}
-        onSelectEdit={handleExerciseEdit}
+        onSelectEdit={handleExerciseSelectEdit}
         onEdit={handleExerciseEdit}
       />
       <Footer category={category} muscles={muscles} onSelect={handleCategorySelect} />

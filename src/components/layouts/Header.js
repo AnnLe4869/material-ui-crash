@@ -13,9 +13,6 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1
-  },
-  logButton: {
-    margin: theme.spacing(1)
   }
 }));
 

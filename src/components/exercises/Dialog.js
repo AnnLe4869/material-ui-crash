@@ -28,8 +28,8 @@ export default function CreateDialog({ muscles, onCreate }) {
         </DialogContent>
         <Form
           muscles={muscles}
-          onSubmit={() => {
-            onCreate();
+          onSubmit={exercise => {
+            onCreate(exercise);
             handleClick();
           }}
         />

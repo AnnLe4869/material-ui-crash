@@ -52,12 +52,7 @@ export default function Index({
     <Grid container justify="space-around">
       <Grid item xs={5}>
         <Paper className={classes.pane}>
-          {exercises.map((
-            [group, exercises] // Note destructure array here
-          ) =>
-            // A short-hand if-else here.
-            // So if group is match category then display, else don't display
-            // By this way if category change, which caused by footer action, this list also change accordingly
+          {exercises.map(([group, exercises]) =>
             !category || category === group ? (
               <React.Fragment key={group}>
                 <Typography variant="h5" className={classes.titleText}>
