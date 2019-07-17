@@ -6,8 +6,7 @@ import {
   MenuItem,
   Select,
   TextField,
-  makeStyles,
-  DialogActions
+  makeStyles
 } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
@@ -23,6 +22,7 @@ export default function Form({ onSubmit, muscles: categories }) {
     description: "",
     muscles: ""
   });
+
   function handleChange(name) {
     return function({ target: { value } }) {
       setExercise({ ...exercise, [name]: value });
@@ -66,11 +66,9 @@ export default function Form({ onSubmit, muscles: categories }) {
         value={exercise.description}
         onChange={handleChange("description")}
       />
-      <DialogActions>
-        <Button onClick={handleSubmit} color="primary" variant="contained">
-          Create
-        </Button>
-      </DialogActions>
+      <Button onClick={handleSubmit} color="primary" variant="contained">
+        Create
+      </Button>
     </form>
   );
 }
