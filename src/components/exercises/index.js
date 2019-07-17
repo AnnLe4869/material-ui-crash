@@ -10,7 +10,9 @@ import {
   Typography
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 import { makeStyles } from "@material-ui/core/styles";
+import Form from "./Form";
 
 const useStyles = makeStyles(theme => ({
   pane: {
@@ -32,13 +34,17 @@ const useStyles = makeStyles(theme => ({
 export default function Index({
   exercises,
   category,
-  onSelect,
+  editMode,
+  muscles,
   exercise: {
     id,
     title = "Welcome!", //default value, used for initial state
     description = "Please select an exercise from the list on the left"
   },
-  onDelete
+  onSelect,
+  onDelete,
+  onSelectEdit,
+  onEdit
 }) {
   const classes = useStyles();
 
@@ -62,6 +68,9 @@ export default function Index({
                     <ListItem button onClick={() => onSelect(id)} key={id}>
                       <ListItemText primary={title} />
                       <ListItemSecondaryAction>
+                        <IconButton onClick={() => onSelectEdit(id)}>
+                          <EditIcon />
+                        </IconButton>
                         <IconButton onClick={() => onDelete(id)}>
                           <DeleteIcon />
                         </IconButton>
@@ -76,12 +85,16 @@ export default function Index({
       </Grid>
       <Grid item xs={5}>
         <Paper className={classes.pane}>
-          <React.Fragment>
-            <Typography variant="h5">{title}</Typography>
-            <Typography variant="subtitle1" className={classes.welcomeText}>
-              {description}
-            </Typography>
-          </React.Fragment>
+          {editMode ? (
+            <Form muscles={muscles} onSubmit={onEdit} />
+          ) : (
+            <React.Fragment>
+              <Typography variant="h5">{title}</Typography>
+              <Typography variant="subtitle1" className={classes.welcomeText}>
+                {description}
+              </Typography>
+            </React.Fragment>
+          )}
         </Paper>
       </Grid>
     </Grid>

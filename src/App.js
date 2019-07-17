@@ -7,6 +7,7 @@ function App() {
   const [exercises, setExercises] = useState(initialValue);
   const [category, setCategory] = useState("");
   const [exercise, setExercise] = useState({});
+  const [editMode, setEditNode] = useState(undefined);
 
   // Note how interchange between object and array
   // Array is easier to enumerate/loop through
@@ -48,6 +49,15 @@ function App() {
     setExercises(exercises.filter(ex => ex.id !== id));
   }
 
+  function handleExerciseEdit(id) {
+    setEditNode(true);
+    setExercise(exercises.find(ex => ex.id === id));
+  }
+
+  function handleExerciseEdit(exercise) {
+    setExercises([...exercises.filter(ex => ex.id !== exercise.id), exercise]);
+  }
+
   return (
     <div className="App">
       <Header muscles={muscles} onExerciseCreate={handleExerciseCreate} />
@@ -55,8 +65,12 @@ function App() {
         exercises={getExercisesByMuscles()}
         exercise={exercise}
         category={category}
+        editMode={editMode}
+        muscles={muscles}
         onSelect={handleExerciseSelect}
         onDelete={handleExerciseDelete}
+        onSelectEdit={handleExerciseEdit}
+        onEdit={handleExerciseEdit}
       />
       <Footer category={category} muscles={muscles} onSelect={handleCategorySelect} />
     </div>

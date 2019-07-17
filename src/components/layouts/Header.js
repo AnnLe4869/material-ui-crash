@@ -1,5 +1,5 @@
 import React from "react";
-import CreateDialog from "../exercises/dialogs/Create";
+import CreateDialog from "../exercises/Dialog";
 import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -31,7 +31,7 @@ export function Header({ muscles, onExerciseCreate }) {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <CreateDialog categories={muscles} onCreate={onExerciseCreate} />
+          <CreateDialog muscles={muscles} onCreate={onExerciseCreate} />
         </Toolbar>
       </AppBar>
     </div>
