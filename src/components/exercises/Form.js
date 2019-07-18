@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   FormControl,
@@ -12,7 +12,7 @@ import {
 const useStyles = makeStyles(theme => ({
   formControlField: {
     margin: theme.spacing(1),
-    minWidth: 200
+    minWidth: 250
   },
   formButton: {
     margin: theme.spacing(1),
@@ -23,9 +23,12 @@ export default function Form({ onSubmit, muscles, exercise }) {
   const classes = useStyles();
   const [state, setState] = useState(getInit());
 
+  useEffect(() => setState(getInit()), [exercise]);
+
   function getInit() {
     return exercise ? exercise : { title: "", description: "", muscles: "" };
   }
+
   function handleChange(name) {
     return function({ target: { value } }) {
       setState({ ...state, [name]: value });
@@ -79,7 +82,7 @@ export default function Form({ onSubmit, muscles, exercise }) {
         color="primary"
         variant="contained"
       >
-        Create
+        {exercise ? "Edit" : "Create"}
       </Button>
     </form>
   );
