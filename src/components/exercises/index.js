@@ -37,7 +37,7 @@ export default function Index({
   editMode,
   muscles,
   exercise: {
-    id,
+    muscles: muscle,
     title = "Welcome!", //default value, used for initial state
     description = "Please select an exercise from the list on the left"
   },
@@ -81,7 +81,11 @@ export default function Index({
       <Grid item xs={5}>
         <Paper className={classes.pane}>
           {editMode ? (
-            <Form muscles={muscles} onSubmit={onEdit} />
+            <Form
+              muscles={muscles}
+              onSubmit={onEdit}
+              exercise={{ title, muscle, description }}
+            />
           ) : (
             <React.Fragment>
               <Typography variant="h5">{title}</Typography>

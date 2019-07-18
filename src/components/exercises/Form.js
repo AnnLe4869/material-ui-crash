@@ -15,23 +15,26 @@ const useStyles = makeStyles(theme => ({
     minWidth: 200
   }
 }));
-export default function Form({ onSubmit, muscles }) {
+export default function Form({ onSubmit, muscles, exercise }) {
   const classes = useStyles();
-  const [exercise, setExercise] = useState({
-    title: "",
-    description: "",
-    muscles: ""
-  });
+  const [state, setState] = useState(getInit());
+  console.log(state);
 
+  function getInit() {
+    return exercise ? exercise : { title: "", description: "", muscles: "" };
+  }
   function handleChange(name) {
     return function({ target: { value } }) {
-      setExercise({ ...exercise, [name]: value });
+      setState({ ...state, [name]: value });
     };
   }
   function handleSubmit(event) {
     // TODO: validate the form
-    onSubmit({ ...exercise, id: exercise.title.toLocaleLowerCase().replace(/ /g, "-") });
-    setExercise({
+    onSubmit({
+      ...state,
+      id: state.title.toLocaleLowerCase().replace(/ /g, "-")
+    });
+    setState({
       title: "",
       description: "",
       muscles: ""
@@ -43,12 +46,12 @@ export default function Form({ onSubmit, muscles }) {
       <TextField
         label="Title"
         className={classes.dialogFormControl}
-        value={exercise.title}
+        value={state.title}
         onChange={handleChange("title")}
       />
       <FormControl className={classes.dialogFormControl}>
         <InputLabel htmlFor="muscles">Muscles</InputLabel>
-        <Select value={exercise.muscles} onChange={handleChange("muscles")}>
+        <Select value={state.muscles} onChange={handleChange("muscles")}>
           {muscles.map(category => (
             <MenuItem key={category} value={category}>
               {category}
@@ -63,7 +66,7 @@ export default function Form({ onSubmit, muscles }) {
         multiline
         rows={4}
         fullWidth
-        value={exercise.description}
+        value={state.description}
         onChange={handleChange("description")}
       />
       <Button onClick={handleSubmit} color="primary" variant="contained">
