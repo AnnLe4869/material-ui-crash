@@ -41,8 +41,8 @@ function App() {
 
   function handleExerciseDelete(id) {
     setExercises(exercises.filter(ex => ex.id !== id));
-    setExercise({});
-    setEditNode(false);
+    setExercise(exercise.id === id ? {} : exercise);
+    setEditNode(exercise.id === id ? false : editMode);
   }
 
   function handleExerciseSelectEdit(id) {
