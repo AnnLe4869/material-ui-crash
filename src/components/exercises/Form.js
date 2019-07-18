@@ -37,8 +37,8 @@ export default function Form({ onSubmit, muscles, exercise }) {
   function handleSubmit(event) {
     // TODO: validate the form
     onSubmit({
-      ...state,
-      id: state.title.toLocaleLowerCase().replace(/ /g, "-")
+      id: state.title.toLocaleLowerCase().replace(/ /g, "-"),
+      ...state
     });
     setState({
       title: "",
