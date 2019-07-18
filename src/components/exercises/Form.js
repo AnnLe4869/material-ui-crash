@@ -10,9 +10,13 @@ import {
 } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
-  dialogFormControl: {
+  formControlField: {
     margin: theme.spacing(1),
     minWidth: 200
+  },
+  formButton: {
+    margin: theme.spacing(1),
+    float: "right"
   }
 }));
 export default function Form({ onSubmit, muscles, exercise }) {
@@ -44,12 +48,11 @@ export default function Form({ onSubmit, muscles, exercise }) {
     <form>
       <TextField
         label="Title"
-        className={classes.dialogFormControl}
+        className={classes.formControlField}
         value={state.title}
         onChange={handleChange("title")}
       />
-      <br />
-      <FormControl className={classes.dialogFormControl}>
+      <FormControl className={classes.formControlField}>
         <InputLabel htmlFor="muscles">Muscles</InputLabel>
         <Select value={state.muscles} onChange={handleChange("muscles")}>
           {muscles.map(category => (
@@ -62,7 +65,7 @@ export default function Form({ onSubmit, muscles, exercise }) {
       <br />
       <TextField
         label="Description"
-        className={classes.dialogFormControl}
+        className={classes.formControlField}
         multiline
         rows={4}
         fullWidth
@@ -70,7 +73,12 @@ export default function Form({ onSubmit, muscles, exercise }) {
         onChange={handleChange("description")}
       />
 
-      <Button onClick={handleSubmit} color="primary" variant="contained">
+      <Button
+        className={classes.formButton}
+        onClick={handleSubmit}
+        color="primary"
+        variant="contained"
+      >
         Create
       </Button>
     </form>

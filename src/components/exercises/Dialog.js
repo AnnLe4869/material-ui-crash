@@ -25,14 +25,14 @@ export default function CreateDialog({ muscles, onCreate }) {
         <DialogTitle>Create a new exercise</DialogTitle>
         <DialogContent>
           <DialogContentText>Please fill out the form below</DialogContentText>
+          <Form
+            muscles={muscles}
+            onSubmit={exercise => {
+              onCreate(exercise);
+              handleClick();
+            }}
+          />
         </DialogContent>
-        <Form
-          muscles={muscles}
-          onSubmit={exercise => {
-            onCreate(exercise);
-            handleClick();
-          }}
-        />
       </Dialog>
     </React.Fragment>
   );
