@@ -21,11 +21,11 @@ const useStyles = makeStyles(theme => ({
 }));
 export default function Form({ onSubmit, muscles, exercise }) {
   const classes = useStyles();
-  const [state, setState] = useState(getInit());
+  const [state, setState] = useState(getInitialState());
 
-  useEffect(() => setState(getInit()), [exercise]);
+  useEffect(() => setState(getInitialState()), [exercise]);
 
-  function getInit() {
+  function getInitialState() {
     return exercise ? exercise : { title: "", description: "", muscles: "" };
   }
 
@@ -40,11 +40,7 @@ export default function Form({ onSubmit, muscles, exercise }) {
       id: state.title.toLocaleLowerCase().replace(/ /g, "-"),
       ...state
     });
-    setState({
-      title: "",
-      description: "",
-      muscles: ""
-    });
+    setState(getInitialState());
   }
 
   return (

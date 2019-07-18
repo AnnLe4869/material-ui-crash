@@ -32,6 +32,7 @@ function App() {
 
   function handleExerciseSelect(id) {
     setExercise(exercises.find(ex => ex.id === id));
+    setEditNode(false);
   }
 
   function handleExerciseCreate(exercise) {
@@ -40,6 +41,8 @@ function App() {
 
   function handleExerciseDelete(id) {
     setExercises(exercises.filter(ex => ex.id !== id));
+    setExercise({});
+    setEditNode(false);
   }
 
   function handleExerciseSelectEdit(id) {
@@ -49,6 +52,7 @@ function App() {
 
   function handleExerciseEdit(exercise) {
     setExercises([...exercises.filter(ex => ex.id !== exercise.id), exercise]);
+    setExercise(exercise);
     setEditNode(false);
   }
 
