@@ -48,7 +48,6 @@ function App() {
   }
 
   function handleExerciseEdit(exercise) {
-    console.log(exercise);
     setExercises([...exercises.filter(ex => ex.id !== exercise.id), exercise]);
     setEditNode(false);
   }

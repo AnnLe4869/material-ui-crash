@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
 export default function Form({ onSubmit, muscles, exercise }) {
   const classes = useStyles();
   const [state, setState] = useState(getInit());
-  console.log(state);
 
   function getInit() {
     return exercise ? exercise : { title: "", description: "", muscles: "" };
@@ -49,6 +48,7 @@ export default function Form({ onSubmit, muscles, exercise }) {
         value={state.title}
         onChange={handleChange("title")}
       />
+      <br />
       <FormControl className={classes.dialogFormControl}>
         <InputLabel htmlFor="muscles">Muscles</InputLabel>
         <Select value={state.muscles} onChange={handleChange("muscles")}>
@@ -69,6 +69,7 @@ export default function Form({ onSubmit, muscles, exercise }) {
         value={state.description}
         onChange={handleChange("description")}
       />
+
       <Button onClick={handleSubmit} color="primary" variant="contained">
         Create
       </Button>
