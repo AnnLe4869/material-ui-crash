@@ -50,7 +50,7 @@ export default function Index({
 
   return (
     <Grid container justify="space-around">
-      <Grid item xs={5}>
+      <Grid item xs={12} sm={5}>
         <Paper className={classes.pane}>
           {exercises.map(([group, exercises]) =>
             !category || category === group ? (
@@ -78,7 +78,7 @@ export default function Index({
           )}
         </Paper>
       </Grid>
-      <Grid item xs={5}>
+      <Grid item xs={12} sm={5}>
         <Paper className={classes.pane}>
           {editMode ? (
             <Form muscles={muscles} onSubmit={onEdit} exercise={exercise} />

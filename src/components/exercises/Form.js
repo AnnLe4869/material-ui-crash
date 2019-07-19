@@ -23,11 +23,10 @@ export default function Form({ onSubmit, muscles, exercise }) {
   const classes = useStyles();
   const [state, setState] = useState(getInitialState());
 
-  useEffect(() => setState(getInitialState()), [exercise]);
-
   function getInitialState() {
     return exercise ? exercise : { title: "", description: "", muscles: "" };
   }
+  useEffect(() => setState(getInitialState()), [exercise]);
 
   function handleChange(name) {
     return function({ target: { value } }) {
