@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { Header, Footer } from "./components/layouts";
 import { muscles, exercises as initialValue } from "./store";
 import Exercises from "./components/exercises";
@@ -57,7 +58,8 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <React.Fragment>
+      <CssBaseline />
       <Header muscles={muscles} onExerciseCreate={handleExerciseCreate} />
       <Exercises
         exercises={getExercisesByMuscles()}
@@ -71,7 +73,7 @@ function App() {
         onEdit={handleExerciseEdit}
       />
       <Footer category={category} muscles={muscles} onSelect={handleCategorySelect} />
-    </div>
+    </React.Fragment>
   );
 }
 

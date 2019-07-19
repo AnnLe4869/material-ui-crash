@@ -12,7 +12,7 @@ import {
 const useStyles = makeStyles(theme => ({
   formControlField: {
     margin: theme.spacing(1),
-    minWidth: 250
+    minWidth: theme.breakpoints.down("sm") ? 100 : 300 // Use number, not number in string form
   },
   formButton: {
     margin: theme.spacing(1),

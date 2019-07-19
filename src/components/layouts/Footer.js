@@ -21,7 +21,7 @@ export default function Footer({ muscles, category, onSelect }) {
         value={index}
         onChange={onIndexSelect}
         variant={windowWidth ? "fullWidth" : "scrollable"}
-        centered={windowWidth ? "true" : "false"}
+        centered={windowWidth ? true : false}
         textColor="primary"
         indicatorColor="secondary"
         scrollButtons="auto"
