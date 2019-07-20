@@ -1,8 +1,7 @@
 import React from "react";
 import uuid from "uuid/v1";
-import { Tabs, Tab, Paper } from "@material-ui/core";
+import { Tabs, Tab, Paper, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 export default function Footer({ muscles, category, onSelect }) {
   // Note the use of short-hand if-else instead of real and long if-else

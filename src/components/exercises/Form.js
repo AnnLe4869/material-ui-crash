@@ -26,7 +26,6 @@ export default function Form({ onSubmit, muscles, exercise }) {
   function getInitialState() {
     return exercise ? exercise : { title: "", description: "", muscles: "" };
   }
-  useEffect(() => setState(getInitialState()), [exercise]);
 
   function handleChange(name) {
     return function({ target: { value } }) {
