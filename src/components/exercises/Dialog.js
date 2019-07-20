@@ -21,7 +21,7 @@ export default function CreateDialog({ muscles, onCreate }) {
       <Fab color="primary" onClick={handleClick} size="small">
         <AddIcon />
       </Fab>
-      <Dialog open={open} onClose={handleClick}>
+      <Dialog open={open} onClose={handleClick} maxWidth="sm" fullWidth>
         <DialogTitle>Create a new exercise</DialogTitle>
         <DialogContent>
           <DialogContentText>Please fill out the form below</DialogContentText>

@@ -11,8 +11,8 @@ import {
 
 const useStyles = makeStyles(theme => ({
   formControlField: {
-    margin: theme.spacing(1),
-    minWidth: theme.breakpoints.down("sm") ? 100 : 300 // Use number, not number in string form
+    margin: theme.spacing(1)
+    //minWidth: theme.breakpoints.down("sm") ? 100 : 300 // Use number, not number in string form
   },
   formButton: {
     margin: theme.spacing(1),
@@ -48,8 +48,9 @@ export default function Form({ onSubmit, muscles, exercise }) {
         className={classes.formControlField}
         value={state.title}
         onChange={handleChange("title")}
+        fullWidth
       />
-      <FormControl className={classes.formControlField}>
+      <FormControl className={classes.formControlField} fullWidth>
         <InputLabel htmlFor="muscles">Muscles</InputLabel>
         <Select value={state.muscles} onChange={handleChange("muscles")}>
           {muscles.map(category => (
@@ -59,12 +60,12 @@ export default function Form({ onSubmit, muscles, exercise }) {
           ))}
         </Select>
       </FormControl>
-      <br />
       <TextField
+        fullWidth
         label="Description"
         className={classes.formControlField}
         multiline
-        rows={4}
+        rows={6}
         fullWidth
         value={state.description}
         onChange={handleChange("description")}
@@ -75,6 +76,7 @@ export default function Form({ onSubmit, muscles, exercise }) {
         onClick={handleSubmit}
         color="primary"
         variant="contained"
+        disabled={!state.title || !state.muscles}
       >
         {exercise ? "Edit" : "Create"}
       </Button>
