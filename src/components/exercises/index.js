@@ -15,12 +15,39 @@ import { makeStyles } from "@material-ui/core/styles";
 import Form from "./Form";
 
 const useStyles = makeStyles(theme => ({
+  "@global": {
+    "html, body, #root": {
+      height: "100%"
+    }
+  },
+
   pane: {
     padding: theme.spacing(2),
-    marginTop: 10,
+    overflowY: "auto",
     marginBottom: 10,
-    height: 500,
-    overflowY: "auto"
+    // Add media query
+    // Note the use of CSS function calc()
+    [theme.breakpoints.up("sm")]: {
+      height: "calc(100% - 10px)",
+      marginTop: 5
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "100%",
+      marginTop: 5
+    }
+  },
+  container: {
+    [theme.breakpoints.up("sm")]: {
+      height: "calc(100% - 64px - 48px)"
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "calc(100% - 56px - 48px)"
+    }
+  },
+  item: {
+    [theme.breakpoints.down("xs")]: {
+      height: "50%"
+    }
   },
   titleText: {
     textTransform: "capitalize"
@@ -50,13 +77,13 @@ export default function Index({
   const classes = useStyles();
 
   return (
-    <Grid container justify="space-around">
-      <Grid item xs={12} sm={5}>
+    <Grid container justify="space-around" className={classes.container}>
+      <Grid className={classes.item} item xs={12} sm={5}>
         <Paper className={classes.pane}>
           {exercises.map(([group, exercises]) =>
             !category || category === group ? (
               <React.Fragment key={group}>
-                <Typography variant="h5" className={classes.titleText}>
+                <Typography variant="h5" className={classes.titleText} color="secondary">
                   {group}
                 </Typography>
                 <List component="ul">
@@ -64,10 +91,10 @@ export default function Index({
                     <ListItem button onClick={() => onSelect(id)} key={id}>
                       <ListItemText primary={title} />
                       <ListItemSecondaryAction>
-                        <IconButton onClick={() => onSelectEdit(id)}>
+                        <IconButton onClick={() => onSelectEdit(id)} color="primary">
                           <EditIcon />
                         </IconButton>
-                        <IconButton onClick={() => onDelete(id)}>
+                        <IconButton onClick={() => onDelete(id)} color="primary">
                           <DeleteIcon />
                         </IconButton>
                       </ListItemSecondaryAction>
@@ -79,13 +106,15 @@ export default function Index({
           )}
         </Paper>
       </Grid>
-      <Grid item xs={12} sm={5}>
+      <Grid className={classes.item} item xs={12} sm={5}>
         <Paper className={classes.pane}>
           {editMode ? (
             <Form key={id} muscles={muscles} onSubmit={onEdit} exercise={exercise} />
           ) : (
             <React.Fragment>
-              <Typography variant="h5">{title}</Typography>
+              <Typography variant="h4" color="secondary">
+                {title}
+              </Typography>
               <Typography variant="subtitle1" className={classes.welcomeText}>
                 {description}
               </Typography>

@@ -1,12 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
+import { purple, red, amber, blue } from "@material-ui/core/colors";
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// createMuiTheme() used to create custom theme. Which is created below will overwrite the default
+const theme = createMuiTheme({
+  palette: {
+    primary: red,
+    secondary: {
+      main: amber[200],
+      light: purple[100],
+      dark: blue[600]
+    },
+    type: "dark"
+  }
+});
+// And then we pass this new-modified theme object to <ThemeProvider> below
+ReactDOM.render(
+  <ThemeProvider theme={theme}>
+    <App />
+  </ThemeProvider>,
+  document.getElementById("root")
+);

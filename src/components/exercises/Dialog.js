@@ -18,7 +18,7 @@ export default function CreateDialog({ muscles, onCreate }) {
 
   return (
     <React.Fragment>
-      <Fab color="primary" onClick={handleClick} size="small">
+      <Fab color="secondary" onClick={handleClick} size="small">
         <AddIcon />
       </Fab>
       <Dialog open={open} onClose={handleClick} maxWidth="sm" fullWidth>

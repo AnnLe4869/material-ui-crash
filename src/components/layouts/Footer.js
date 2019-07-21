@@ -13,7 +13,7 @@ export default function Footer({ muscles, category, onSelect }) {
   function onIndexSelect(event, index) {
     onSelect(index === 0 ? "" : muscles[index - 1]);
   }
-
+  console.log(theme.palette.primary.light);
   return (
     <Paper>
       <Tabs
@@ -21,7 +21,7 @@ export default function Footer({ muscles, category, onSelect }) {
         onChange={onIndexSelect}
         variant={windowWidth ? "fullWidth" : "scrollable"}
         centered={windowWidth ? true : false}
-        textColor="primary"
+        textColor="secondary"
         indicatorColor="secondary"
         scrollButtons="auto"
       >
