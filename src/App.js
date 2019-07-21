@@ -1,14 +1,22 @@
 import React, { useState } from "react";
-import "./App.css";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { Header, Footer } from "./components/layouts";
 import { muscles, exercises as initialValue } from "./store";
+import { Provider } from "./context";
+import { Header, Footer } from "./components/layouts";
 import Exercises from "./components/exercises";
 function App() {
   const [exercises, setExercises] = useState(initialValue);
   const [category, setCategory] = useState("");
   const [exercise, setExercise] = useState({});
   const [editMode, setEditNode] = useState(undefined);
+
+  function getContext() {
+    return {
+      muscles,
+      ...exercise,
+      ...exercise,
+      onCreate: handleExerciseCreate
+    };
+  }
 
   function getExercisesByMuscles() {
     const initExercises = muscles.reduce(
@@ -58,9 +66,8 @@ function App() {
   }
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <Header muscles={muscles} onExerciseCreate={handleExerciseCreate} />
+    <Provider value={getContext()}>
+      <Header />
       <Exercises
         exercises={getExercisesByMuscles()}
         exercise={exercise}
@@ -73,7 +80,7 @@ function App() {
         onEdit={handleExerciseEdit}
       />
       <Footer category={category} muscles={muscles} onSelect={handleCategorySelect} />
-    </React.Fragment>
+    </Provider>
   );
 }
 

@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     [theme.breakpoints.up("sm")]: {
-      height: "calc(100% - 64px - 48px)"
+      height: "100%"
     },
     [theme.breakpoints.down("xs")]: {
       height: "calc(100% - 56px - 48px)"

@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export function Header({ muscles, onExerciseCreate }) {
+export function Header() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -28,7 +28,7 @@ export function Header({ muscles, onExerciseCreate }) {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <CreateDialog muscles={muscles} onCreate={onExerciseCreate} />
+          <CreateDialog />
         </Toolbar>
       </AppBar>
     </div>
