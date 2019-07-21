@@ -13,6 +13,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { makeStyles } from "@material-ui/core/styles";
 import Form from "./Form";
+import { withContext } from "../../context";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
@@ -57,30 +58,30 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-// Note how destructure syntax is used here and how default value is set so to avoid an initial stage
-export default function Index({
-  exercises,
-  category,
-  editMode,
-  muscles,
-  exercise,
-  exercise: {
-    id,
-    title = "Welcome!", //default value, used for initial state
-    description = "Please select an exercise from the list on the left"
-  },
-  onSelect,
-  onDelete,
-  onSelectEdit,
-  onEdit
-}) {
+// Note how destructor syntax is used here and how default value is set so to avoid an initial stage
+function Exercise(props) {
   const classes = useStyles();
-
+  const {
+    exercisesByMuscles,
+    category,
+    editMode,
+    muscles,
+    exercise,
+    exercise: {
+      id,
+      title = "Welcome!", //default value, used for initial state
+      description = "Please select an exercise from the list on the left"
+    },
+    onSelect,
+    onDelete,
+    onSelectEdit,
+    onEdit
+  } = props;
   return (
     <Grid container justify="space-around" className={classes.container}>
       <Grid className={classes.item} item xs={12} sm={5}>
         <Paper className={classes.pane}>
-          {exercises.map(([group, exercises]) =>
+          {exercisesByMuscles.map(([group, exercises]) =>
             !category || category === group ? (
               <React.Fragment key={group}>
                 <Typography variant="h5" className={classes.titleText} color="secondary">
@@ -125,3 +126,5 @@ export default function Index({
     </Grid>
   );
 }
+
+export default withContext(Exercise);

@@ -9,12 +9,21 @@ function App() {
   const [exercise, setExercise] = useState({});
   const [editMode, setEditNode] = useState(undefined);
 
+  // Don't destructor syntax here because we want to change the object itself, not just the copy
   function getContext() {
     return {
       muscles,
-      ...exercise,
-      ...exercise,
-      onCreate: handleExerciseCreate
+      exercises,
+      exercise,
+      category,
+      editMode,
+      exercisesByMuscles: getExercisesByMuscles(),
+      onCreate: handleExerciseCreate,
+      onSelect: handleExerciseSelect,
+      onCategorySelect: handleCategorySelect,
+      onEdit: handleExerciseEdit,
+      onSelectEdit: handleExerciseSelectEdit,
+      onDelete: handleExerciseDelete
     };
   }
 
@@ -68,18 +77,8 @@ function App() {
   return (
     <Provider value={getContext()}>
       <Header />
-      <Exercises
-        exercises={getExercisesByMuscles()}
-        exercise={exercise}
-        category={category}
-        editMode={editMode}
-        muscles={muscles}
-        onSelect={handleExerciseSelect}
-        onDelete={handleExerciseDelete}
-        onSelectEdit={handleExerciseSelectEdit}
-        onEdit={handleExerciseEdit}
-      />
-      <Footer category={category} muscles={muscles} onSelect={handleCategorySelect} />
+      <Exercises />
+      <Footer />
     </Provider>
   );
 }

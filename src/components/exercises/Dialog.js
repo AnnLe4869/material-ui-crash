@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import Form from "./Form";
-import { Consumer, withContext } from "../../context";
+import { withContext } from "../../context";
 function CreateDialog(props) {
   const [open, setOpen] = useState(false);
   const { muscles, onCreate } = props;
@@ -37,5 +37,5 @@ function CreateDialog(props) {
     </React.Fragment>
   );
 }
-
+// This accept the component name, not the actual component form like <CreateDialog/>
 export default withContext(CreateDialog);
