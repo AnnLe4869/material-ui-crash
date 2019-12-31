@@ -66,7 +66,6 @@ export default function Form({ onSubmit, muscles, exercise }) {
         className={classes.formControlField}
         multiline
         rows={6}
-        fullWidth
         value={state.description}
         onChange={handleChange("description")}
       />

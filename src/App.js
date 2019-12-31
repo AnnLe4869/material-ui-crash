@@ -10,6 +10,7 @@ function App() {
   const [editMode, setEditNode] = useState(undefined);
 
   // Don't destructor syntax here because we want to change the object itself, not just the copy
+
   function getContext() {
     return {
       muscles,
