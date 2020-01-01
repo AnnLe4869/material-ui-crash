@@ -3,8 +3,7 @@
     [
       "@babel/preset-env",
       {
-        "useBuiltIns": "entry",
-        "target": "\"> 0.25%, not dead\""
+        "useBuiltIns": "entry"
       }
     ],
     "@babel/preset-react"
