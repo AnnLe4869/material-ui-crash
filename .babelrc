@@ -3,7 +3,12 @@
     [
       "@babel/preset-env",
       {
-        "useBuiltIns": "entry"
+        "useBuiltIns": "usage",
+        "corejs": { "version": 3, "proposals": true },
+        "targets": {
+          "browsers": "> 1%, not ie 11, not op_mini all",
+          "node": 12
+        }
       }
     ],
     "@babel/preset-react"
