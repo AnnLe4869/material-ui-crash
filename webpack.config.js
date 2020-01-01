@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 module.exports = {
-  entry: "./src/index",
+  entry: "./src/client",
   output: {
     filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist")
