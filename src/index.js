@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import App from "./App";
 
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -20,10 +19,14 @@ const theme = createMuiTheme({
   }
 });
 // And then we pass this new-modified theme object to <ThemeProvider> below
-ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <CssBaseline />
-    <App />
-  </ThemeProvider>,
-  document.getElementById("root")
+// Dynamic import below
+
+import(/* webpackChunkName: "App" */ "./App").then(({ default: App }) =>
+  ReactDOM.render(
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>,
+    document.getElementById("root")
+  )
 );
