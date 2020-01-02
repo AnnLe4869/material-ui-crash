@@ -20,4 +20,4 @@
 
 1. Install all package, run `npm install`
 2. For development purpose, run `npm run dev`
-3. For production purpose, run `npm run build`
+3. # For production purpose, run `npm run build`
