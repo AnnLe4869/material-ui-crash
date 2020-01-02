@@ -3,6 +3,7 @@ import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { ThemeProvider, ServerStyleSheets } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import morgan from "morgan";
 
 import App from "./App";
 import theme from "./theme";
@@ -10,7 +11,7 @@ import theme from "./theme";
 const app = express();
 const port = 3000;
 app.use(express.static("public"));
-
+app.use(morgan("dev"));
 app.use((req, res) => {
   const sheets = new ServerStyleSheets();
   const html = ReactDOMServer.renderToString(

@@ -9,17 +9,19 @@
     "babel-plugin-import": "^1.13.0",
     "core-js": "^3.6.1",
     "express": "^4.17.1",
+    "morgan": "^1.9.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "serve": "^11.3.0",
     "uuid": "^3.3.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --open --compress --mode development",
-    "dev": "webpack --mode development --progress",
-    "build": "webpack --config webpack.config.js --mode production --progress",
-    "stats": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json dist",
-    "serve": "serve dist"
+    "start": "node server/main",
+    "start:dev": "node server/main",
+    "watch": "webpack --mode development --watch & nodemon dist/main",
+    "dev": "rm -rf server public && webpack --mode development --progress",
+    "build": "rm -rf server public && webpack --mode production --progress",
+    "stats": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json dist"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",

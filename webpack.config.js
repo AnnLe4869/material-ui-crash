@@ -1,6 +1,5 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 const nodeExternals = require("webpack-node-externals");
@@ -26,10 +25,9 @@ module.exports = [
       path: path.resolve(__dirname, "public")
     },
     plugins: [
-      new CleanWebpackPlugin(),
-      new HtmlWebpackPlugin({
-        template: "./public/index.html"
-      }),
+      // new HtmlWebpackPlugin({
+      //   title: "React app"
+      // }),
       new BundleAnalyzerPlugin()
     ]
   },
@@ -37,6 +35,10 @@ module.exports = [
     ...commonConfig,
     target: "node",
     entry: "./src/server",
+    output: {
+      filename: "[name].js",
+      path: path.resolve(__dirname, "server")
+    },
     externals: [nodeExternals()]
   }
 ];
