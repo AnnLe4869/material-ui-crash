@@ -1,7 +1,8 @@
 import express from "express";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
-import { ThemeProvider, ServerStyleSheets } from "@material-ui/styles";
+import { ThemeProvider } from "@material-ui/styles";
+import { ServerStyleSheets } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import morgan from "morgan";
 

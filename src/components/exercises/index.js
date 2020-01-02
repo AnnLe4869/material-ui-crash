@@ -7,10 +7,10 @@ import {
   ListItemText,
   ListItemSecondaryAction,
   Paper,
-  Typography,
-  makeStyles
+  Typography
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { makeStyles } from "@material-ui/core/styles";
 import EditIcon from "@material-ui/icons/Edit";
 import Form from "./Form";
 import { withContext } from "../../context";

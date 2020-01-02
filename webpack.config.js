@@ -6,12 +6,12 @@ const commonConfig = {
   devtool: "source-map",
   module: {
     rules: [{ test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }]
+  },
+  resolve: {
+    alias: {
+      "@material-ui/core": "@material-ui/core/es"
+    }
   }
-  // resolve: {
-  //   alias: {
-  //     "@material-ui/core": "@material-ui/core/es"
-  //   }
-  // }
 };
 
 module.exports = [
@@ -19,7 +19,6 @@ module.exports = [
     ...commonConfig,
     entry: "./src/client",
     output: {
-      filename: "[name].js",
       path: path.resolve(__dirname, "public")
     }
   },
@@ -28,7 +27,6 @@ module.exports = [
     target: "node",
     entry: "./src/server",
     output: {
-      filename: "[name].js",
       path: path.resolve(__dirname, "server")
     },
     externals: [nodeExternals()]

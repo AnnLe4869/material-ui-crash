@@ -15,6 +15,6 @@ ReactDOM.hydrate(
   </ThemeProvider>,
   document.getElementById("root"),
   () => {
-    setTimeout(() => document.getElementById("jss-styles").remove(), 20000);
+    document.getElementById("jss-styles").remove();
   }
 );
