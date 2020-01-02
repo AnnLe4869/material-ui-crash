@@ -13,8 +13,5 @@ ReactDOM.hydrate(
     <CssBaseline />
     <App />
   </ThemeProvider>,
-  document.getElementById("root"),
-  () => {
-    document.getElementById("jss-styles").remove();
-  }
+  document.getElementById("root")
 );
