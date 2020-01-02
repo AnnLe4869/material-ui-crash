@@ -21,14 +21,13 @@ module.exports = [
     ...commonConfig,
     entry: "./src/client",
     output: {
-      filename: "[name].[contenthash].js",
+      filename: "[name].js",
       path: path.resolve(__dirname, "public")
     },
     plugins: [
       // new HtmlWebpackPlugin({
       //   title: "React app"
       // }),
-      new BundleAnalyzerPlugin()
     ]
   },
   {

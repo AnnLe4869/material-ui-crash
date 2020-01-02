@@ -14,11 +14,12 @@ import theme from "./theme";
 function Main() {
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
+    console.log("Seem work");
+
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

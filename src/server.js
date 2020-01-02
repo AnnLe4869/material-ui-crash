@@ -35,7 +35,7 @@ app.use((req, res) => {
         <title>React App</title>
       </head>
       <body>
-        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <script src='main.js' async></script>
         <div id="root">${html}</div>
       </body>
     </html>
