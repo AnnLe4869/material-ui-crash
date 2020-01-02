@@ -40,12 +40,12 @@ app.use((req, res) => {
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
-        <style id="jss-server-side">${css}</style>
+        <style id='jss-styles'>${css}</style>
         <title>React App</title>
       </head>
       <body>
-        <script src='main.js' async></script>
         <div id="root">${html}</div>
+        <script src='main.js' async></script>
       </body>
     </html>
 `.trim()

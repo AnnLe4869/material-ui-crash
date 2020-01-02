@@ -1,6 +1,8 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 import { purple, red, amber, blue } from "@material-ui/core/colors";
 
+// createMuiTheme() used to create custom theme. Which is created below will overwrite the default
+
 const theme = createMuiTheme({
   palette: {
     primary: red,
