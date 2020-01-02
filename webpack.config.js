@@ -13,6 +13,12 @@ const commonConfig = {
     alias: {
       "@material-ui/core": "@material-ui/core/es"
     }
+  },
+  // Below is for debug test
+  // As why dev mode work but prod mode fail
+  optimization: {
+    concatenateModules: true,
+    minimize: true
   }
 };
 
